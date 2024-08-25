@@ -48,6 +48,8 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+                <MauiImage Include="Resources\Images\base\*" />
+        	<MauiImage Include="Resources\Images\Profil\*" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -66,7 +68,6 @@
 	  <None Remove="Resources\Images\log_in_background.jpg" />
 	  <None Remove="Resources\Images\magnifying_glass.svg" />
 	  <None Remove="Resources\Images\minus.svg" />
-	  <None Remove="Resources\Images\next_circle_arrow.png" />
 	  <None Remove="Resources\Images\plus.svg" />
 	  <None Remove="Resources\Images\scan.svg" />
 	  <None Remove="Resources\Images\sign_up_background.webp" />
@@ -87,6 +88,18 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\AddWall.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Settings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\SidePanel.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

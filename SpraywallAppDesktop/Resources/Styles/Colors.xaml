@@ -28,6 +28,23 @@
     <Color x:Key="Gray900">#212121</Color>
     <Color x:Key="Gray950">#141414</Color>
 
+
+    <Color x:Key="LightSage">#D3E4CD</Color>
+    <Color x:Key="LighterSage">#EBF4E8</Color>
+    
+    <Color x:Key="StoneGrey">#8D918D</Color>
+    <Color x:Key="TreeBarkBrown">#4E3629</Color>
+    
+    <Color x:Key="ForestGreen">#013220</Color>
+    <Color x:Key="FernGreen">#4F7942</Color>
+
+    <Color x:Key="HighPriorityGreen">#58D555</Color>
+    <Color x:Key="LowPriorityGreen">#CEFFA7</Color>
+
+    <Color x:Key="HighPriorityRed">#FF5151</Color>
+    <Color x:Key="LowPriorityRed">#FFA7A7</Color>
+
+
     <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
     <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
     <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>

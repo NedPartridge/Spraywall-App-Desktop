@@ -1,6 +1,5 @@
 using SpraywallAppDesktop.Helpers;
 using SpraywallAppDesktop.Models;
-using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 
@@ -18,8 +17,7 @@ public partial class SignUp : ContentPage
     // Exit the sign up screen, go back to the signup/login choice
     private async void OnBackButtonClicked(object sender, EventArgs e)
     {
-        // Cannot route directly to page: instead, 'step' 'back' one page
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("//" + nameof(MainPage));
     }
 
 
@@ -57,7 +55,7 @@ public partial class SignUp : ContentPage
         {
             string responseBody = await response.Content.ReadAsStringAsync();
             AppSettings.Token = responseBody;
-            await Shell.Current.GoToAsync(nameof(Home));
+            await Shell.Current.GoToAsync("//" + nameof(Home));
         }
         // Respond to bad login details
         else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
@@ -94,5 +92,15 @@ public partial class SignUp : ContentPage
         bool hasSymbol = password.Any(ch => !char.IsLetterOrDigit(ch));
 
         return hasUpperCase && hasLowerCase && hasDigit && hasSymbol;
+    }
+
+    private void OnConsentRejected(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync("//" + nameof(MainPage));
+    }
+
+    private void OnConsentAccepted(object sender, EventArgs e)
+    {
+        Overlay.IsVisible = false;
     }
 }

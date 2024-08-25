@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpraywallAppDesktop.Pages.SidePanel">
+    <Grid RowDefinitions="*,*,*,3*,0.5*"
+      BackgroundColor="{StaticResource LightSage}">
+        <Button Text="Spraywall App"
+                x:Name="SpraywallAppButton"
+            Clicked="OnSpraywallAppClicked"
+            BackgroundColor="{StaticResource ForestGreen}"
+            TextColor="White"
+            CornerRadius="0"
+            BorderColor="Black"
+            FontSize="50"
+            FontAttributes="Bold"
+            BorderWidth="1"/>
+        <Button Text="Add Wall"
+                x:Name="AddWallButton"
+            Clicked="OnAddWallClicked"
+            BackgroundColor="{StaticResource FernGreen}"
+            TextColor="Black"
+            Grid.Row="1"
+            CornerRadius="0"
+            BorderColor="Black"
+            FontSize="50"
+            FontAttributes="Bold"
+            BorderWidth="1"/>
+        <Button Text="Settings"
+                x:Name="SettingsButton"
+            Clicked="OnSettingsClicked"
+            BackgroundColor="{StaticResource FernGreen}"
+            TextColor="Black"
+            Grid.Row="2"
+            CornerRadius="0"
+            BorderColor="Black"
+            FontSize="50"
+            FontAttributes="Bold"
+            BorderWidth="1"/>
+
+        <Button Text="Contact us"
+            Clicked="OnContactUsClicked"
+            TextColor="Black"
+            BackgroundColor="Transparent"
+            Grid.Row="4"
+            CornerRadius="0"
+            BorderColor="Black"
+            FontSize="30"
+            BorderWidth="1"/>
+    </Grid>
+</ContentView>

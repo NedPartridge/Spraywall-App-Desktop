@@ -14,12 +14,17 @@
         -->
     <Grid>
         <Image
-            Source="landing_background.png"
+            Source="landing_background.webp"
+            BackgroundColor="#D3E4CD"
             Opacity="0.15"
             Aspect="AspectFill"/>
         <!--Grid contains all controls-->
         <Grid RowDefinitions="*,*,*,*,*,*,*">
-            <Label FontSize="50" Grid.RowSpan="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" WidthRequest="300" Grid.Row="1">
+            <Label FontSize="50" 
+                   Grid.RowSpan="2" 
+                   VerticalTextAlignment="Center" 
+                   HorizontalTextAlignment="Center" 
+                   Grid.Row="1">
                 Spray Wall App
             </Label>
             <!--Login/sign up buttons - similar ui components, different functions -->
@@ -32,8 +37,8 @@
                         Padding="10"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        HeightRequest="60"
-                        WidthRequest="100">
+                        HeightRequest="90"
+                        WidthRequest="150">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="SignUpButtonClicked"/>
                     </Frame.GestureRecognizers>
@@ -43,8 +48,8 @@
                             Grid.Column="0"/>
                 </Frame>
                 <Frame
-                        HeightRequest="60"
-                        WidthRequest="100"
+                        HeightRequest="90"
+                        WidthRequest="150"
                         BackgroundColor="White"
                         BorderColor="Black"
                         CornerRadius="10"
@@ -56,49 +61,12 @@
                         <TapGestureRecognizer Tapped="LogInButtonClicked"/>
                     </Frame.GestureRecognizers>
 
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Label Text="Log in"
+                    <Label Text="Log in"
                                VerticalOptions="Center"
-                               HorizontalOptions="Start" 
+                               HorizontalOptions="Center" 
                                Grid.Column="0"/>
-
-                        <Image Source="arrow_circle_right.svg"
-                               WidthRequest="30"
-                               HeightRequest="30"
-                               VerticalOptions="Center"
-                               HorizontalOptions="End"
-                               Grid.Column="1"/>
-                    </Grid>
                 </Frame>
             </HorizontalStackLayout>
-            <!--
-                Redirect the user to a reduced-capability, anonymous session
-                no login required.
-            -->
-            <Frame Grid.Row="4"
-                    BackgroundColor="Transparent"
-                    BorderColor="Black"
-                    CornerRadius="10"
-                    HasShadow="False"
-                    Padding="10"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    HeightRequest="40"
-                    WidthRequest="300">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="AnonymousUserButtonClicked"/>
-                </Frame.GestureRecognizers>
-                <Label Text="Continue without login"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center" 
-                        Grid.Column="0"/>
-            </Frame>
         </Grid>
     </Grid>
-
 </ContentPage>

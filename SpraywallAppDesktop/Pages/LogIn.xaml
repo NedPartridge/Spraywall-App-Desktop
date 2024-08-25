@@ -6,8 +6,9 @@
     <!--Login page - accepts an email, and password.-->
     <Grid>
         <Image
-            Source="log_in_background.png"
+            Source="log_in_background.webp"
             Opacity="0.15"
+            BackgroundColor="#D3E4CD"
             Aspect="AspectFill"/>
         <Grid RowDefinitions="*, 2*, *, *, 2*, *, 2*">
             <Label 

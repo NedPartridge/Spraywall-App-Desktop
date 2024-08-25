@@ -21,8 +21,7 @@ public partial class LogIn : ContentPage
     // Do NOT set the currently logged in user.
     private async void OnBackButtonClicked(object sender, EventArgs e)
     {
-        // Cannot route directly to page: instead, 'step' 'back' one page
-        await Shell.Current.GoToAsync("..");
+        await Shell.Current.GoToAsync("//" + nameof(MainPage));
     }
 
     // Login the user, by checking provided details against API.
@@ -52,7 +51,7 @@ public partial class LogIn : ContentPage
         {
             string responseBody = await response.Content.ReadAsStringAsync();
             AppSettings.Token = responseBody;
-            await Shell.Current.GoToAsync(nameof(Home));
+            await Shell.Current.GoToAsync("//" + nameof(Home));
         }
         // Respond to bad login details
         else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
