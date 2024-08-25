@@ -1,24 +1,32 @@
-﻿namespace SpraywallAppDesktop
+﻿using SpraywallAppDesktop.Pages;
+
+namespace SpraywallAppDesktop
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
+        // Initialise the component - only applicable to certain deployment platforms.
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        // Send user to account log in page
+        private async void LogInButtonClicked(object sender, TappedEventArgs e)
         {
-            count++;
+            await Shell.Current.GoToAsync(nameof(LogIn));
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        // Send user to new account creation page
+        private async void SignUpButtonClicked(object sender, TappedEventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(SignUp));
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        // 'Continue without signing in'
+        // Access a page with limited functionality - no logging, no saving data, etc
+        private async void AnonymousUserButtonClicked(object sender, TappedEventArgs e)
+        {
+            await Shell.Current.GoToAsync(nameof(AnonymousSelectWall));
         }
     }
 

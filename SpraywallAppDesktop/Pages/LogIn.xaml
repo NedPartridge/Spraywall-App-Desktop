@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpraywallAppDesktop.Pages.LogIn"
+             Shell.NavBarIsVisible="False">
+    <!--Login page - accepts an email, and password.-->
+    <Grid>
+        <Image
+            Source="log_in_background.png"
+            Opacity="0.15"
+            Aspect="AspectFill"/>
+        <Grid RowDefinitions="*, 2*, *, *, 2*, *, 2*">
+            <Label 
+                Text="Log in"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" 
+                FontSize="20"/>
+            <VerticalStackLayout Padding="40" Grid.Row="2">
+                <Label Padding="10,0,0,0" Text="Email:"/>
+                <Entry x:Name="email"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Padding="40" Grid.Row="3">
+                <Label Padding="10,0,0,0" Text="Password:"/>
+                <Entry IsPassword="True" x:Name="password"/>
+            </VerticalStackLayout>
+
+
+            <!--Buttons-->
+            <Grid ColumnDefinitions="4*,*,2*,*,4*" 
+                       Grid.Row="5" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center">
+                <!--Back button-->
+                <ImageButton Clicked="OnBackButtonClicked"
+                 Source="left_arrow.svg"
+                 MaximumWidthRequest="100"
+                 Grid.Column="1"/>
+
+                <!--Next button-->
+                <ImageButton Clicked="OnLoginButtonClicked"
+                 Source="next_circle_arrow.svg"
+                 MaximumWidthRequest="100"
+                 Grid.Column="3"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

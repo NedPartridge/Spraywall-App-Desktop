@@ -1,10 +1,21 @@
-﻿namespace SpraywallAppDesktop
+﻿using SpraywallAppDesktop.Pages;
+
+namespace SpraywallAppDesktop;
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+
+        // Map relevant pages to routes
+        // Route names to be based on page class names
+        // Routes allow the pages to be called up from other places in the application
+        Routing.RegisterRoute(nameof(LogIn), typeof(LogIn));
+        Routing.RegisterRoute(nameof(SignUp), typeof(SignUp));
+        Routing.RegisterRoute(nameof(AnonymousUser), typeof(AnonymousUser));
+        Routing.RegisterRoute(nameof(Home), typeof(Home));
+        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
+        Routing.RegisterRoute(nameof(AnonymousSelectWall), typeof(AnonymousSelectWall));
+        Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
     }
 }

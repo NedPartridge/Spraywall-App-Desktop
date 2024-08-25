@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpraywallAppDesktop.Pages.SignUp"
+             Shell.NavBarIsVisible="False">
+    <Grid>
+        <Image
+                Source="sign_up_background.webp"
+                Opacity="0.15"
+                Aspect="AspectFill"/>
+        <Grid RowDefinitions="*, 2*, *, *, *, 2*, *, 2*">
+            <Label 
+                    Text="Sign up"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Center" 
+                    FontSize="20"/>
+            
+            <!--Create account input controls-->
+            <VerticalStackLayout Padding="40" Grid.Row="2">
+                <Label Padding="10,0,0,0" Text="Name:"/>
+                <Entry x:Name="name"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Padding="40" Grid.Row="3">
+                <Label Padding="10,0,0,0" Text="Email:"/>
+                <Entry x:Name="email"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Padding="40" Grid.Row="4">
+                <Label Padding="10,0,0,0" Text="Password:"/>
+                <Entry IsPassword="True" x:Name="password"/>
+            </VerticalStackLayout>
+
+            
+            <!--Buttons-->
+            <Grid ColumnDefinitions="4*,*,2*,*,4*" 
+                                   Grid.Row="6" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center">
+                <!--Back button-->
+                <ImageButton Clicked="OnBackButtonClicked"
+                             Source="left_arrow.svg"
+                             MaximumWidthRequest="100"
+                             Grid.Column="1"/>
+
+                <!--Next button-->
+                <ImageButton Clicked="OnSubmitButtonClicked"
+                             Source="next_circle_arrow.svg"
+                             MaximumWidthRequest="100"
+                             Grid.Column="3"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
