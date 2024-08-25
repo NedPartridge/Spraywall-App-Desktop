@@ -38,6 +38,8 @@ namespace SpraywallAppDesktop
                 AppSettings.absRetrievePublicKeyAddress = new(baseUrl + AppSettings.RetrievePublicKeyAddress);
                 AppSettings.absSignUpAddress = new(baseUrl + AppSettings.SignUpAddress);
                 AppSettings.absLogInAddress = new(baseUrl + AppSettings.LogInAddress);
+                AppSettings.absWallsAddress = new(baseUrl + AppSettings.WallsAddress);
+
 
                 // Retrieve the public key
                 HttpResponseMessage response = await _client.GetAsync(AppSettings.absRetrievePublicKeyAddress);

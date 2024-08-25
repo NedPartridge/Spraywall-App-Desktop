@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SpraywallAppDesktop.Pages.AddWall"
@@ -14,7 +13,7 @@
                    FontAttributes="Bold"
                    FontSize="50"
                    HorizontalOptions="Center"/>
-            
+
             <!--
                 Form body
             -->
@@ -27,7 +26,7 @@
                            FontSize="30"
                            BackgroundColor="Transparent"
                            HorizontalOptions="Center"/>
-                    
+
                     <!-- 
                         Search box, upload image button
                     -->
@@ -44,7 +43,13 @@
                                    VerticalOptions="Center"
                                    x:Name="WallName"/>
                         </Grid>
-                        
+
+                        <!-- Image selection -->
+                        <Button Text="Select Image"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                Clicked="OnSelectImageClicked"/>
                     </Grid>
 
                     <!--
@@ -55,7 +60,8 @@
                                  CornerRadius="50"
                                  HorizontalOptions="End"
                                  Source="arrow_circle_right_green.webp"
-                                 BackgroundColor="Transparent"/>
+                                 BackgroundColor="Transparent"
+                                 Clicked="OnSubmitClicked"/>
                 </Grid>
             </Border>
         </Grid>

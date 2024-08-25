@@ -1,5 +1,6 @@
 using SpraywallAppDesktop.Helpers;
 using SpraywallAppDesktop.Models;
+using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 
@@ -51,6 +52,7 @@ public partial class LogIn : ContentPage
         {
             string responseBody = await response.Content.ReadAsStringAsync();
             AppSettings.Token = responseBody;
+            Debug.WriteLine(responseBody);
             await Shell.Current.GoToAsync("//" + nameof(Home));
         }
         // Respond to bad login details
