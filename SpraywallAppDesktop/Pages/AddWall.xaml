@@ -2,68 +2,118 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SpraywallAppDesktop.Pages.AddWall"
              xmlns:local="clr-namespace:SpraywallAppDesktop.Pages">
-    <Grid ColumnDefinitions="*, 3*">
-        <local:SidePanel ButtonParameter="add wall"/>
+    <Grid>
+        <Grid ColumnDefinitions="*, 3*">
+            <local:SidePanel ButtonParameter="add wall"/>
 
-        <Grid Grid.Column="1" 
-              RowDefinitions="*,8*"
-              BackgroundColor="{StaticResource LighterSage}"
-              Padding="30">
-            <Label Text="Adding Wall" 
-                   FontAttributes="Bold"
-                   FontSize="50"
-                   HorizontalOptions="Center"/>
+            <Grid Grid.Column="1" 
+                  RowDefinitions="*,8*,*"
+                  BackgroundColor="{StaticResource LighterSage}"
+                  Padding="30">
+                <Label Text="Adding Wall" 
+                       FontAttributes="Bold"
+                       FontSize="50"
+                       HorizontalOptions="Center"/>
 
-            <!--
-                Form body
-            -->
-            <Border Grid.Row="1"
-                Stroke="Black"
-                StrokeThickness="1"
-                Padding="50">
-                <Grid RowDefinitions="*,6*,*">
-                    <Label Text="Create"
-                           FontSize="30"
-                           BackgroundColor="Transparent"
-                           HorizontalOptions="Center"/>
+                <!--
+                    Form body
+                -->
+                <Border Grid.Row="1"
+                    Stroke="Black"
+                    StrokeThickness="1"
+                    Padding="50">
+                    <Grid RowDefinitions="*,6*">
+                        <Label Text="Create"
+                               FontSize="30"
+                               BackgroundColor="Transparent"
+                               HorizontalOptions="Center"/>
 
-                    <!-- 
-                        Search box, upload image button
-                    -->
-                    <Grid RowDefinitions="*,4*,*"
-                          Grid.Row="1">
-                        <Grid ColumnDefinitions="*,8*">
-                            <Label FontSize="15" 
-                                   Text="Name:"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"/>
-                            <Entry Placeholder="Enter wall name" 
-                                   BackgroundColor="White"
-                                   Grid.Column="1"
-                                   VerticalOptions="Center"
-                                   x:Name="WallName"/>
+                        <!-- 
+                            Search box, upload image button
+                        -->
+                        <Grid RowDefinitions="2*,7*,*"
+                              Grid.Row="1">
+                            <!-- Grid for Name Entry -->
+                            <Grid Grid.Row="0" ColumnDefinitions="*,8*">
+                                <Label FontSize="15" 
+                                       Text="Name:"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                                <Entry Placeholder="Enter wall name" 
+                                       BackgroundColor="White"
+                                       Grid.Column="1"
+                                       VerticalOptions="Center"
+                                       x:Name="WallName"/>
+                            </Grid>
+
+                            <!--Image Selection Grid-->
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <!--ImageButton-->
+                                <Image
+                                    x:Name="SelectImageBackground"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    Source="filler_image.webp"
+                                    Opacity="0"
+                                    Aspect="AspectFit"/>
+
+                                <!--Button for Image Selection-->
+                                <Button Text="Select Image"
+                                        x:Name="SelectImageButton"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Clicked="OnSelectImageClicked"/>
+                            </Grid>
                         </Grid>
-
-                        <!-- Image selection -->
-                        <Button Text="Select Image"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                                Grid.ColumnSpan="2"
-                                Clicked="OnSelectImageClicked"/>
+                        <!--
+                            Submit new wall button
+                        -->
+                        <ImageButton Grid.Row="2"
+                                     WidthRequest="70"
+                                     CornerRadius="50"
+                                     HorizontalOptions="End"
+                                     VerticalOptions="End"
+                                     Source="arrow_circle_right_green.webp"
+                                     BackgroundColor="Transparent"
+                                     Clicked="OnSubmitClicked"/>
                     </Grid>
-
-                    <!--
-                        Submit new wall button
-                    -->
-                    <ImageButton Grid.Row="2"
-                                 WidthRequest="100"
-                                 CornerRadius="50"
-                                 HorizontalOptions="End"
-                                 Source="arrow_circle_right_green.webp"
-                                 BackgroundColor="Transparent"
-                                 Clicked="OnSubmitClicked"/>
-                </Grid>
-            </Border>
+                </Border>
+            </Grid>
         </Grid>
+
+        <!--
+                'Loading' overlay
+            -->
+        <ContentView x:Name="Overlay"
+                 Grid.RowSpan="1000"
+                 Grid.ColumnSpan="1000"
+                 ZIndex="10"
+                 BackgroundColor="#80000000"
+                 IsVisible="False"
+                 InputTransparent="False">
+            <Grid>
+                    <!--
+                        Imagebutton required to prevent clicking behind the overlay
+                    -->
+                <ImageButton Source="filler_image.webp" 
+                               Opacity="0" 
+                               Aspect="AspectFill"
+                               InputTransparent="False"/>
+                <Frame HorizontalOptions="Center"   
+                       VerticalOptions="Center"
+                       BackgroundColor="White"
+                       CornerRadius="20">
+                    <!-- Text: tell the user what's what -->
+                    <Label  Text="Loading..."
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            FontSize="23" />
+                </Frame>
+            </Grid>
+        </ContentView>
     </Grid>
 </ContentPage>

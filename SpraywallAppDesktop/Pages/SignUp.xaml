@@ -65,7 +65,7 @@
                 <!--
                     Imagebutton required to prevent clicking behind the overlay
                 -->
-                <ImageButton Source="filler_image.jpg" 
+                <ImageButton Source="filler_image.webp" 
                            Opacity="0" 
                            Aspect="AspectFill"
                            InputTransparent="False"/>

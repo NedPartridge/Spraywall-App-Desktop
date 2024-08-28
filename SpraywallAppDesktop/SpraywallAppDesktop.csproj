@@ -62,7 +62,6 @@
 	  <None Remove="Resources\Images\alert_triangle.svg" />
 	  <None Remove="Resources\Images\arrow_circle_right.svg" />
 	  <None Remove="Resources\Images\file_checkmark.svg" />
-	  <None Remove="Resources\Images\filler_image.jpg" />
 	  <None Remove="Resources\Images\landing_background.jpg" />
 	  <None Remove="Resources\Images\left_arrow.svg" />
 	  <None Remove="Resources\Images\log_in_background.jpg" />

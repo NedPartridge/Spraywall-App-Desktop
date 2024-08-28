@@ -10,17 +10,15 @@
             Opacity="0.15"
             BackgroundColor="#D3E4CD"
             Aspect="AspectFill"/>
-        <Grid RowDefinitions="*, 2*, *, *, 2*, *, 2*">
-            <Label 
+        <Grid RowDefinitions="*, 2*, 6*, *, 2*, *, 2*">
+            <Label
+                Grid.RowSpan="10"
                 Text="Log in"
-                VerticalOptions="Center" 
                 HorizontalOptions="Center" 
                 FontSize="20"/>
-            <VerticalStackLayout Padding="40" Grid.Row="2">
+            <VerticalStackLayout Grid.RowSpan="10" Padding="40" Spacing="10" Grid.Row="2">
                 <Label Padding="10,0,0,0" Text="Email:"/>
-                <Entry x:Name="email"/>
-            </VerticalStackLayout>
-            <VerticalStackLayout Padding="40" Grid.Row="3">
+                <Entry x:Name="email" Margin="0,0,0,20"/>
                 <Label Padding="10,0,0,0" Text="Password:"/>
                 <Entry IsPassword="True" x:Name="password"/>
             </VerticalStackLayout>
