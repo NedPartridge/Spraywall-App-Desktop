@@ -70,7 +70,6 @@
 	  <None Remove="Resources\Images\plus.svg" />
 	  <None Remove="Resources\Images\scan.svg" />
 	  <None Remove="Resources\Images\sign_up_background.webp" />
-	  <None Remove="Resources\Images\switch_wall.svg" />
 	  <None Remove="Resources\Images\user_circle.svg" />
 	</ItemGroup>
 

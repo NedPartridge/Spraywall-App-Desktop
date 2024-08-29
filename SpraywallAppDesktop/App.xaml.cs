@@ -27,7 +27,7 @@ namespace SpraywallAppDesktop
         {
             try
             {
-                // Determine which platform's URL to use - android is quirky like that
+                // Determine which platform's URL to use - required because android is quirky like that
                 string baseUrl;
                 if (DeviceInfo.Platform == DevicePlatform.Android)
                     baseUrl = AppSettings.AndroidBaseUrl;
@@ -39,7 +39,8 @@ namespace SpraywallAppDesktop
                 AppSettings.absSignUpAddress = new(baseUrl + AppSettings.SignUpAddress);
                 AppSettings.absLogInAddress = new(baseUrl + AppSettings.LogInAddress);
                 AppSettings.absWallsAddress = new(baseUrl + AppSettings.WallsAddress);
-
+                AppSettings.absGetManagedWallsAddress = new(baseUrl + AppSettings.GetManagedWallsAddress);
+                AppSettings.absGetWallAddress = new(baseUrl + AppSettings.GetWallAddress);
 
                 // Retrieve the public key
                 HttpResponseMessage response = await _client.GetAsync(AppSettings.absRetrievePublicKeyAddress);

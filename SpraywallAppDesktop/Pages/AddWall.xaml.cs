@@ -1,10 +1,5 @@
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;
 using SpraywallAppDesktop.Models;
-using System.Diagnostics;
-using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 
 namespace SpraywallAppDesktop.Pages
 {
@@ -122,6 +117,16 @@ namespace SpraywallAppDesktop.Pages
                     await DisplayAlert("Error", "Failed to add wall.", "OK");
                 }
             }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            // Reset fields
+            _selectedImage = null;
+            WallName.Text = null;
+            SelectImageBackground.Opacity = 0;
         }
     }
 }

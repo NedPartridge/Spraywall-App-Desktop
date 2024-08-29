@@ -13,5 +13,114 @@
             Sidepanel, with home highlighted
         -->
         <local:SidePanel ButtonParameter="home"/>
+        
+        <!--
+            Show the wall management portal, if the user has walls added to their account
+        -->
+        <Grid Grid.Column="1"
+              RowDefinitions="*,4*,0.1*, 0.8*"
+              Padding="20"
+              x:Name="MainContent"
+              BackgroundColor="{StaticResource LighterSage}">
+            <Grid ColumnDefinitions="8*,*">
+                <Label Text="Wall: "
+                       x:Name="WallTitle"
+                       VerticalOptions="Center"
+                       Padding="10"
+                       FontSize="30"/>
+                <!--Switch wall button-->
+                <ImageButton Source="switch_wall_white.webp"
+                             BackgroundColor="{StaticResource TreeBarkBrown}"
+                             Grid.Column="1"
+                             Margin="30"
+                             Padding="15"/>
+            </Grid>
+            <Image Source="filler_image.webp"
+                   Opacity="0"
+                   x:Name="WallImage"
+                   Grid.Row="1"/>
+            <Grid ColumnDefinitions="*,0.2*,*,0.2*,*"
+                  Grid.Row="3">
+                <Border>
+                    <Grid HorizontalOptions="Center"
+                          VerticalOptions="Center">
+                        <ImageButton Source="filler_image.webp"
+                                     Opacity="0"
+                                     Clicked="ImageButton_Clicked"/>
+                        <HorizontalStackLayout VerticalOptions="Center" Spacing="30">
+                            <Image Source="edit_icon.webp" 
+                                   VerticalOptions="Center"
+                                   Margin="10"/>
+                            <Label Text="Wall" 
+                                   VerticalOptions="Center"
+                                   FontSize="30"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="2">
+                    <Grid HorizontalOptions="Center"
+                          VerticalOptions="Center">
+                        <ImageButton Source="filler_image.webp"
+                     Opacity="0"
+                     Clicked="ImageButton_Clicked"/>
+                        <HorizontalStackLayout VerticalOptions="Center">
+                            <Image Source="edit_icon.webp"
+                                   VerticalOptions="Center"
+                                   Margin="10"/>
+                            <Label Text="Climbs"
+                                   FontSize="30"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+                <Border Grid.Column="4">
+                    <Grid HorizontalOptions="Center"
+                          VerticalOptions="Center">
+                        <ImageButton Source="filler_image.webp"
+                                     Opacity="0"
+                                     Clicked="ImageButton_Clicked"/>
+                        <HorizontalStackLayout VerticalOptions="Center">
+                            <Image Source="edit_users.webp"
+                                   Margin="20"/>
+                            <Label Text="Climbers"
+                                   FontSize="30"
+                                   VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+
+        <Grid x:Name="NoWallsContent"
+              IsVisible="False"
+              Grid.Column="1">
+            <VerticalStackLayout>
+                <Label Text="No walls managed by this account"
+                       FontSize="50"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+                <Label Text="Maybe add some?"
+                       FontSize="30"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
+
+
+        <Grid x:Name="ErrorContent"
+              IsVisible="False"
+              Grid.Column="1">
+            <VerticalStackLayout>
+                <Label Text="Error"
+                       FontSize="50"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+                <Label Text="COme back later?"
+                       FontSize="30"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+        </Grid>
     </Grid>
 </ContentPage>
