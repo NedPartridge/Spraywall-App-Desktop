@@ -56,7 +56,6 @@ namespace SpraywallAppDesktop.Pages
         }
 
         // Validate, and submit the wall creation request.
-        // 
         private async void OnSubmitClicked(object sender, EventArgs e)
         {
             // Prevent inputs while waiting for server
@@ -77,7 +76,7 @@ namespace SpraywallAppDesktop.Pages
             var formData = new MultipartFormDataContent();
             formData.Add(new StringContent(wallName), "Name");
             var imageContent = new StreamContent(await imageFile.OpenReadAsync());
-            imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg"); // Adjust as needed
+            imageContent.Headers.ContentType = MediaTypeHeaderValue.Parse("image/jpeg");
             formData.Add(imageContent, "Image", imageFile.FileName);
 
             // Send the request

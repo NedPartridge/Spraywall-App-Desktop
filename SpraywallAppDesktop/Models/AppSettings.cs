@@ -15,6 +15,7 @@
 
         public static readonly string WallsAddress = "Walls";
         public static readonly string GetWallAddress = "Walls/getwall";
+        public static readonly string UpdateWallAddress = "Walls/updatewall";
 
         // Absolute URLs - initialised in app.xaml.cs, under the constructor
         public static Uri absRetrievePublicKeyAddress { get; set; }
@@ -23,6 +24,7 @@
         public static Uri absWallsAddress { get; set; }
         public static Uri absGetManagedWallsAddress { get; set; }
         public static Uri absGetWallAddress { get; set; }
+        public static Uri absUpdateWallAddress { get; set; }
 
 
         // The public key used to encrypt password data

@@ -25,4 +25,5 @@
     <ShellContent ContentTemplate="{DataTemplate pages:Home}" Route="Home" />
     <ShellContent ContentTemplate="{DataTemplate pages:Settings}" Route="Settings" />
     <ShellContent ContentTemplate="{DataTemplate pages:AddWall}" Route="AddWall" />
+    <ShellContent ContentTemplate="{DataTemplate pages:EditWall}" Route="EditWall" />
 </Shell>

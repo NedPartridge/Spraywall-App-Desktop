@@ -32,8 +32,6 @@ public partial class Home : ContentPage
 
 			// Deserialise the list of walls, for use in future requests
 			walls = JsonSerializer.Deserialize<List<WallDTO>>(jsonWalls);
-
-			Debug.WriteLine("Walls retrieved");
 		}
 		catch (Exception ex) { await DisplayAlert("Error", "Check connection", "ok"); }
     }
@@ -71,9 +69,59 @@ public partial class Home : ContentPage
 		}
     }
 
-    private void ImageButton_Clicked(object sender, EventArgs e)
+    // Navigate to the wall editing screen for the currently selected wall
+    // No existence check required on wall.id, because if the button is available, it's valid.
+    private async void OnEditWallClicked(object sender, EventArgs e)
     {
-		Debug.WriteLine("Button clicked");
+        await Shell.Current.GoToAsync("//" + nameof(EditWall) + $"?wallId={wall.Id}");
+    }
+
+    private void OnOpenSwitchWallClicked(object sender, EventArgs e)
+    {
+        WallSelectOverlay.IsVisible = true;
+    }
+
+    private void OnCloseOverlayClicked(object sender, EventArgs e)
+    {
+        WallSelectOverlay.IsVisible = false;
+    }
+
+    // When one of the items in the switch wall dropdown is clicked, 
+    // change the display to that wall.
+    private async void OnSwitchWallClicked(object sender, ItemTappedEventArgs e)
+    {
+        if (e.Item == null) // Ensure it's a valid click: existence check.
+            return;
+
+        WallDTO tappedWall = e.Item as WallDTO;
+
+        if (tappedWall == null)
+            return;
+
+        // Prevent clicks while loading
+        Overlay.IsVisible = true;
+        // Set the wall to that at the ID
+        wall = await GetWall(tappedWall.Id);
+
+        if (wall == null) // Request failed. somehow
+        {
+            NoWallsContent.IsVisible = false;
+            MainContent.IsVisible = false;
+            ErrorContent.IsVisible = true;
+        }
+        else // Success! :D
+        {
+            NoWallsContent.IsVisible = false;
+            MainContent.IsVisible = true;
+            ErrorContent.IsVisible = false;
+            SetBindings();
+        }
+
+        Overlay.IsVisible = false;
+        WallSelectOverlay.IsVisible = false;
+        
+        // Deselect the item
+        ((ListView)sender).SelectedItem = null;
     }
 
 	private async Task<Wall?> GetWall(int id)
@@ -134,5 +182,8 @@ public partial class Home : ContentPage
         WallTitle.Text = "Wall: " + wall.Name;
         WallImage.Source = ImageSource.FromFile(wall.ImagePath);
         WallImage.Opacity = 1;
+
+        // Bind the walls dropdown to the list of walls
+        WallsListView.ItemsSource = walls;
     }
 }

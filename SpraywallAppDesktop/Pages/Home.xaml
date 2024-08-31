@@ -8,119 +8,222 @@
         Only accessible after a succesful login/sign up, all web requests are 
         provided with authentication from that step.
     -->
-    <Grid ColumnDefinitions="*,3*">
-        <!--
-            Sidepanel, with home highlighted
-        -->
-        <local:SidePanel ButtonParameter="home"/>
-        
-        <!--
-            Show the wall management portal, if the user has walls added to their account
-        -->
-        <Grid Grid.Column="1"
-              RowDefinitions="*,4*,0.1*, 0.8*"
-              Padding="20"
-              x:Name="MainContent"
-              BackgroundColor="{StaticResource LighterSage}">
-            <Grid ColumnDefinitions="8*,*">
-                <Label Text="Wall: "
-                       x:Name="WallTitle"
-                       VerticalOptions="Center"
-                       Padding="10"
-                       FontSize="30"/>
-                <!--Switch wall button-->
-                <ImageButton Source="switch_wall_white.webp"
-                             BackgroundColor="{StaticResource TreeBarkBrown}"
-                             Grid.Column="1"
-                             Margin="30"
-                             Padding="15"/>
+    <Grid>
+        <Grid ColumnDefinitions="*,3*">
+            <!--
+                Sidepanel, with home highlighted
+            -->
+            <local:SidePanel ButtonParameter="home"/>
+
+            <!--
+                Show the wall management portal, if the user has walls added to their account
+            -->
+            <Grid Grid.Column="1"
+                  RowDefinitions="*,4*,0.1*, 0.8*"
+                  Padding="20"
+                  x:Name="MainContent"
+                  BackgroundColor="{StaticResource LighterSage}">
+                <Grid ColumnDefinitions="8*,*">
+                    <Label Text="Wall: "
+                           x:Name="WallTitle"
+                           VerticalOptions="Center"
+                           Padding="10"
+                           FontSize="30"/>
+                    <!--Switch wall button-->
+                    <ImageButton Source="switch_wall_white.webp"
+                                 BackgroundColor="{StaticResource TreeBarkBrown}"
+                                 Grid.Column="1"
+                                 Margin="30"
+                                 Padding="15"
+                                 Clicked="OnOpenSwitchWallClicked"/>
+                </Grid>
+                <Image Source="filler_image.webp"
+                       Opacity="0"
+                       x:Name="WallImage"
+                       Grid.Row="1"/>
+                
+                <!--
+                    Wall management buttons
+                -->
+                <Grid ColumnDefinitions="*,0.2*,*,0.2*,*"
+                      Grid.Row="3">
+                    <Border>
+                        <Grid HorizontalOptions="Center"
+                              VerticalOptions="Center">
+                            <ImageButton Source="filler_image.webp"
+                                         Opacity="0"
+                                         Clicked="OnEditWallClicked"
+                                         ZIndex="5"
+                                         InputTransparent="False"/>
+                            <HorizontalStackLayout VerticalOptions="Center" Spacing="30">
+                                <Image Source="edit_icon.webp" 
+                                       VerticalOptions="Center"
+                                       Margin="10"/>
+                                <Label Text="Wall" 
+                                       VerticalOptions="Center"
+                                       FontSize="30"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="2">
+                        <Grid HorizontalOptions="Center"
+                              VerticalOptions="Center">
+                            <ImageButton Source="filler_image.webp"
+                         Opacity="0"
+                         Clicked="OnEditWallClicked"/>
+                            <HorizontalStackLayout VerticalOptions="Center">
+                                <Image Source="edit_icon.webp"
+                                       VerticalOptions="Center"
+                                       Margin="10"/>
+                                <Label Text="Climbs"
+                                       FontSize="30"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Column="4">
+                        <Grid HorizontalOptions="Center"
+                              VerticalOptions="Center">
+                            <ImageButton Source="filler_image.webp"
+                                         Opacity="0"
+                                         Clicked="OnEditWallClicked"/>
+                            <HorizontalStackLayout VerticalOptions="Center">
+                                <Image Source="edit_users.webp"
+                                       Margin="20"/>
+                                <Label Text="Climbers"
+                                       FontSize="30"
+                                       VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Border>
+                </Grid>
             </Grid>
-            <Image Source="filler_image.webp"
-                   Opacity="0"
-                   x:Name="WallImage"
-                   Grid.Row="1"/>
-            <Grid ColumnDefinitions="*,0.2*,*,0.2*,*"
-                  Grid.Row="3">
-                <Border>
-                    <Grid HorizontalOptions="Center"
-                          VerticalOptions="Center">
-                        <ImageButton Source="filler_image.webp"
-                                     Opacity="0"
-                                     Clicked="ImageButton_Clicked"/>
-                        <HorizontalStackLayout VerticalOptions="Center" Spacing="30">
-                            <Image Source="edit_icon.webp" 
-                                   VerticalOptions="Center"
-                                   Margin="10"/>
-                            <Label Text="Wall" 
-                                   VerticalOptions="Center"
-                                   FontSize="30"/>
-                        </HorizontalStackLayout>
-                    </Grid>
-                </Border>
-                <Border Grid.Column="2">
-                    <Grid HorizontalOptions="Center"
-                          VerticalOptions="Center">
-                        <ImageButton Source="filler_image.webp"
-                     Opacity="0"
-                     Clicked="ImageButton_Clicked"/>
-                        <HorizontalStackLayout VerticalOptions="Center">
-                            <Image Source="edit_icon.webp"
-                                   VerticalOptions="Center"
-                                   Margin="10"/>
-                            <Label Text="Climbs"
-                                   FontSize="30"
-                                   VerticalOptions="Center"/>
-                        </HorizontalStackLayout>
-                    </Grid>
-                </Border>
-                <Border Grid.Column="4">
-                    <Grid HorizontalOptions="Center"
-                          VerticalOptions="Center">
-                        <ImageButton Source="filler_image.webp"
-                                     Opacity="0"
-                                     Clicked="ImageButton_Clicked"/>
-                        <HorizontalStackLayout VerticalOptions="Center">
-                            <Image Source="edit_users.webp"
-                                   Margin="20"/>
-                            <Label Text="Climbers"
-                                   FontSize="30"
-                                   VerticalOptions="Center"/>
-                        </HorizontalStackLayout>
-                    </Grid>
-                </Border>
+
+            <!--
+                If the user doesn't manage any walls, let them know
+            -->
+            <Grid x:Name="NoWallsContent"
+                  IsVisible="False"
+                  Grid.Column="1">
+                <VerticalStackLayout>
+                    <Label Text="No walls managed by this account"
+                           FontSize="50"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Maybe add some?"
+                           FontSize="30"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Grid>
+
+            <!--
+                If something goofs, let the user know
+            -->
+            <Grid x:Name="ErrorContent"
+                  IsVisible="False"
+                  Grid.Column="1">
+                <VerticalStackLayout>
+                    <Label Text="Error"
+                           FontSize="50"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Come back later?"
+                           FontSize="30"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
             </Grid>
         </Grid>
 
-
-        <Grid x:Name="NoWallsContent"
-              IsVisible="False"
-              Grid.Column="1">
-            <VerticalStackLayout>
-                <Label Text="No walls managed by this account"
-                       FontSize="50"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-                <Label Text="Maybe add some?"
+        <!--
+            Wall select overlay
+        -->
+        <ContentView x:Name="WallSelectOverlay"
+                     Grid.RowSpan="1000"
+                     Grid.ColumnSpan="1000"
+                     ZIndex="10"
+                     BackgroundColor="#80000000"
+                     IsVisible="False"
+                     InputTransparent="False">
+            <Grid BackgroundColor="{StaticResource LighterSage}"
+                  VerticalOptions="Center"
+                  HorizontalOptions="Center"
+                  Padding="30" 
+                  RowDefinitions="*,4*"
+                  HeightRequest="300"
+                  WidthRequest="500">
+                <Label Text="Select a wall"
                        FontSize="30"
-                       VerticalOptions="Center"
                        HorizontalOptions="Center"/>
-            </VerticalStackLayout>
-        </Grid>
+                <Button Text="X"
+                        FontSize="40"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"
+                        BackgroundColor="{StaticResource StoneGrey}"
+                        Clicked="OnCloseOverlayClicked"
+                        ZIndex="20"/>
+                <ListView x:Name="WallsListView"
+                          ZIndex="3"
+                          Grid.Row="1"
+                          ItemTapped="OnSwitchWallClicked">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Border Margin="10" 
+                                        Padding="20"
+                                        BackgroundColor="{StaticResource FernGreen}">
+                                    <Grid>
+                                        <Label Text="{Binding Name}" 
+                                           FontSize="20" 
+                                           VerticalOptions="Center" />
+                                    </Grid>
+                                </Border>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!--
+                    Imagebutton required to prevent clicking behind the overlay
+                -->
+                <ImageButton Source="filler_image.webp" 
+                             Opacity="0" 
+                             Aspect="AspectFill"
+                             InputTransparent="False"/>
+            </Grid>
+        </ContentView>
 
 
-        <Grid x:Name="ErrorContent"
-              IsVisible="False"
-              Grid.Column="1">
-            <VerticalStackLayout>
-                <Label Text="Error"
-                       FontSize="50"
+        <!--
+            'Loading' overlay
+        -->
+        <ContentView x:Name="Overlay"
+                 Grid.RowSpan="1000"
+                 Grid.ColumnSpan="1000"
+                 ZIndex="10"
+                 BackgroundColor="#80000000"
+                 IsVisible="False"
+                 InputTransparent="False">
+            <Grid>
+                <!--
+                        Imagebutton required to prevent clicking behind the overlay
+                    -->
+                <ImageButton Source="filler_image.webp" 
+                               Opacity="0" 
+                               Aspect="AspectFill"
+                               InputTransparent="False"/>
+                <Frame HorizontalOptions="Center"   
                        VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-                <Label Text="COme back later?"
-                       FontSize="30"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"/>
-            </VerticalStackLayout>
-        </Grid>
+                       BackgroundColor="White"
+                       CornerRadius="20">
+                    <!-- Text: tell the user what's what -->
+                    <Label  Text="Loading..."
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            FontSize="23" />
+                </Frame>
+            </Grid>
+        </ContentView>
     </Grid>
 </ContentPage>
