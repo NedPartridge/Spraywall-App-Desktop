@@ -8,7 +8,8 @@
     <Grid>
         <Grid RowDefinitions="*,8*,*"
               BackgroundColor="{StaticResource LighterSage}"
-              Padding="30">
+              Padding="30"
+              x:Name="MainContent">
             <Label Text="Adding Wall" 
                     FontAttributes="Bold"
                     FontSize="50"
@@ -79,6 +80,18 @@
                                     Source="arrow_circle_right_green.webp"
                                     BackgroundColor="Transparent"
                                     Clicked="OnSubmitClicked"/>
+                    <!--
+                        Exit editing button
+                    -->
+                    <Button Grid.Row="2"
+                            Text="Back"
+                            FontSize="30"
+                            HeightRequest="70"
+                            HorizontalOptions="Start"
+                            VerticalOptions="End"
+                            BackgroundColor="{StaticResource StoneGrey}"
+                            BorderColor="Black"
+                            Clicked="OnNavigateToHome"/>
                 </Grid>
             </Border>
         </Grid>
@@ -112,5 +125,22 @@
                 </Frame>
             </Grid>
         </ContentView>
+        
+        <!--
+            Error view
+        -->
+        <Grid x:Name="ErrorContent"
+              RowDefinitions="*,3*"
+              IsVisible="False">
+            <Label Text="Something's gone wrong, come back later."
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="40"/>
+            <Button Clicked="OnNavigateToHome"
+                    Text="Home"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Grid.Row="1"/>
+        </Grid>
     </Grid>
 </ContentPage>

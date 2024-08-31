@@ -124,6 +124,7 @@ public partial class Home : ContentPage
         ((ListView)sender).SelectedItem = null;
     }
 
+    // Retrieve a wall from the webserver, and store it's data
 	private async Task<Wall?> GetWall(int id)
 	{
 		HttpResponseMessage response = await client.GetAsync(AppSettings.absGetWallAddress + $"/{id}");

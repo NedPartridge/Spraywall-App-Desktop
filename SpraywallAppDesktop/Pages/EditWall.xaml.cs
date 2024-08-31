@@ -10,10 +10,11 @@ namespace SpraywallAppDesktop.Pages;
 public partial class EditWall : ContentPage
 {
     public int WallId { get; set; }
-	public EditWall()
-	{
-		InitializeComponent();
-	}
+    Wall OriginalWall { get; set; }
+    public EditWall()
+    {
+        InitializeComponent();
+    }
 
 
     private FileResult _selectedImage;
@@ -125,13 +126,34 @@ public partial class EditWall : ContentPage
         }
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
+        HttpClient client = new HttpClient();
         base.OnAppearing();
 
-        // Reset fields
-        _selectedImage = null;
-        WallName.Text = null;
-        SelectImageBackground.Opacity = 0;
+        MainContent.IsVisible = true;
+        ErrorContent.IsVisible = false;
+
+        // Set controls to gathered data
+        SelectImageBackground.Source = Path.Combine(FileSystem.AppDataDirectory, "wall_image.webp");
+        var nameResponse = await client.GetAsync(AppSettings.absGetWallNameAddress + $"/{WallId}");
+        Debug.WriteLine(await nameResponse.Content.ReadAsStringAsync());
+        Debug.WriteLine(AppSettings.absGetWallNameAddress + $"/{WallId}");
+        if (nameResponse.IsSuccessStatusCode)
+        {
+            string name = await nameResponse.Content.ReadAsStringAsync();
+            WallName.Text = "Wall: " + name;
+            SelectImageBackground.Opacity = 1;
+        }
+        else
+        {
+            ErrorContent.IsVisible = true;
+            MainContent.IsVisible = false;
+        }
+    }
+
+    private async void OnNavigateToHome(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//" + nameof(Home));
     }
 }
