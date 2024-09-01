@@ -3,7 +3,49 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SpraywallAppDesktop.Pages.Settings"
              xmlns:local="clr-namespace:SpraywallAppDesktop.Pages">
-    <Grid>
+    <Grid ColumnDefinitions="*,3*">
         <local:SidePanel ButtonParameter="settings"/>
+        <Grid RowDefinitions="*, 2*,0.4*"
+              Grid.Column="1">
+            <Label Text="Updating Settings"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           FontSize="40"/>
+            <Grid RowDefinitions="*,*,*"
+          Grid.Row="1"
+          Padding="30">
+                <VerticalStackLayout>
+                    <Label Text="Email:"/>
+                    <Entry x:Name="Email"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="1">
+                    <Label Text="Name:"/>
+                    <Entry x:Name="Name"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Row="2">
+                    <Label Text="Enter new password:"/>
+                    <Entry x:Name="Password"/>
+                </VerticalStackLayout>
+            </Grid>
+            <Grid Grid.Row="2"
+          Padding="30">
+                <ImageButton Source="save.webp"
+                     Clicked="OnDiscardChanges"
+                     HorizontalOptions="StartAndExpand"
+                     VerticalOptions="Center"
+                     WidthRequest="90"
+                     HeightRequest="90"
+                     CornerRadius="10"
+                     BackgroundColor="Red"/>
+                <ImageButton Source="trash.webp"
+                     Clicked="OnSaveChanges"
+                     HorizontalOptions="End"
+                     VerticalOptions="Center"
+                     BackgroundColor="Green"
+                     WidthRequest="90"
+                     HeightRequest="90"
+                     CornerRadius="10"/>
+            </Grid>
+        </Grid>
     </Grid>
 </ContentPage>

@@ -12,6 +12,8 @@
         public static readonly string LogInAddress = "User/login";
         public static readonly string SignUpAddress = "User/signup";
         public static readonly string GetManagedWallsAddress = "User/getmanagedwalls";
+        public static readonly string GetUserAddress = "User/getuser";
+        public static readonly string EditUserAddress = "User/edituser";
 
         public static readonly string WallsAddress = "Walls";
         public static readonly string GetWallAddress = "Walls/getwall";
@@ -27,6 +29,8 @@
         public static Uri absGetWallAddress { get; set; }
         public static Uri absUpdateWallAddress { get; set; }
         public static Uri absGetWallNameAddress { get; set; }
+        public static Uri absGetUserAddress { get; set; }
+        public static Uri absEditUserAddress { get; set; }
 
 
         // The public key used to encrypt password data
