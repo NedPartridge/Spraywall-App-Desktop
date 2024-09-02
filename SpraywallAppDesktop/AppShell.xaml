@@ -26,4 +26,5 @@
     <ShellContent ContentTemplate="{DataTemplate pages:Settings}" Route="Settings" />
     <ShellContent ContentTemplate="{DataTemplate pages:AddWall}" Route="AddWall" />
     <ShellContent ContentTemplate="{DataTemplate pages:EditWall}" Route="EditWall" />
+    <ShellContent Route="ManageCLimbs" ContentTemplate="{DataTemplate pages:ManageCLimbs}" />
 </Shell>

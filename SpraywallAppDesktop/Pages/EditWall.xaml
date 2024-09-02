@@ -10,7 +10,7 @@
               BackgroundColor="{StaticResource LighterSage}"
               Padding="30"
               x:Name="MainContent">
-            <Label Text="Adding Wall" 
+            <Label Text="Editing Wall" 
                     FontAttributes="Bold"
                     FontSize="50"
                     HorizontalOptions="Center"/>
@@ -23,11 +23,6 @@
                 StrokeThickness="1"
                 Padding="50">
                 <Grid RowDefinitions="*,6*">
-                    <Label Text="Create"
-                            FontSize="30"
-                            BackgroundColor="Transparent"
-                            HorizontalOptions="Center"/>
-
                     <!-- 
                         Search box, upload image button
                     -->

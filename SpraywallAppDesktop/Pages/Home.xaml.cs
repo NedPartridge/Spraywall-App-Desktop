@@ -1,3 +1,4 @@
+using SpraywallAppDesktop.Helpers;
 using SpraywallAppDesktop.Models;
 using System.Diagnostics;
 using System.Net.Http.Headers;
@@ -76,11 +77,20 @@ public partial class Home : ContentPage
         await Shell.Current.GoToAsync("//" + nameof(EditWall) + $"?wallId={wall.Id}");
     }
 
+
+    // Navigate to the climb editing screen for the currently selected wall
+    // No existence check required on wall.id, because if the button is available, it's valid.
+    private async void OnEditClimbClicked(object sender, EventArgs e)
+    {
+        StateHelper.wallId = wall.Id;
+        await Shell.Current.GoToAsync("//" + nameof(ManageCLimbs));
+    }
+
     private void OnOpenSwitchWallClicked(object sender, EventArgs e)
     {
         WallSelectOverlay.IsVisible = true;
     }
-
+        
     private void OnCloseOverlayClicked(object sender, EventArgs e)
     {
         WallSelectOverlay.IsVisible = false;

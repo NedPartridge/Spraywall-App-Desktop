@@ -45,6 +45,8 @@ namespace SpraywallAppDesktop
                 AppSettings.absGetWallNameAddress = new(baseUrl + AppSettings.GetWallNameAddress);
                 AppSettings.absGetUserAddress = new(baseUrl + AppSettings.GetUserAddress);
                 AppSettings.absEditUserAddress = new(baseUrl + AppSettings.EditUserAddress);
+                AppSettings.absGetClimbs = new(baseUrl + AppSettings.GetClimbs);
+                AppSettings.absDeleteClimb = new(baseUrl + AppSettings.DeleteClimb);
 
                 // Retrieve the public key
                 HttpResponseMessage response = await _client.GetAsync(AppSettings.absRetrievePublicKeyAddress);

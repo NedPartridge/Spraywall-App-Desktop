@@ -19,6 +19,9 @@
         public static readonly string GetWallAddress = "Walls/getwall";
         public static readonly string UpdateWallAddress = "Walls/updatewall";
         public static readonly string GetWallNameAddress = "Walls/getwallname";
+        public static readonly string GetClimbs = "Walls/getclimbsmanagement";
+        public static readonly string DeleteClimb = "Walls/deleteclimb";
+
 
         // Absolute URLs - initialised in app.xaml.cs, under the constructor
         public static Uri absRetrievePublicKeyAddress { get; set; }
@@ -31,7 +34,8 @@
         public static Uri absGetWallNameAddress { get; set; }
         public static Uri absGetUserAddress { get; set; }
         public static Uri absEditUserAddress { get; set; }
-
+        public static Uri absGetClimbs { get; set; }
+        public static Uri absDeleteClimb { get; set; }
 
         // The public key used to encrypt password data
         // Set by the sign up/in pages, on init

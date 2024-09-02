@@ -69,8 +69,9 @@
                         <Grid HorizontalOptions="Center"
                               VerticalOptions="Center">
                             <ImageButton Source="filler_image.webp"
-                         Opacity="0"
-                         Clicked="OnEditWallClicked"/>
+                                         Opacity="0"
+                                         ZIndex="5"
+                                         Clicked="OnEditClimbClicked"/>
                             <HorizontalStackLayout VerticalOptions="Center">
                                 <Image Source="edit_icon.webp"
                                        VerticalOptions="Center"
@@ -86,6 +87,7 @@
                               VerticalOptions="Center">
                             <ImageButton Source="filler_image.webp"
                                          Opacity="0"
+                                         ZIndex="5"
                                          Clicked="OnEditWallClicked"/>
                             <HorizontalStackLayout VerticalOptions="Center">
                                 <Image Source="edit_users.webp"

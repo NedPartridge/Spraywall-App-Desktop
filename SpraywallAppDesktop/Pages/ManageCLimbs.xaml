@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SpraywallAppDesktop.Pages.ManageCLimbs"
+             Shell.NavBarIsVisible="False"
+             xmlns:local="clr-namespace:SpraywallAppDesktop.Pages">
+    <Grid BackgroundColor="{StaticResource LighterSage}">
+        <Grid ColumnDefinitions="*,3*">
+            <local:SidePanel ButtonParameter="home"/>
+
+            <Grid RowDefinitions="*,5*"
+                      Grid.Column="1">
+                <VerticalStackLayout HorizontalOptions="Center"
+                                     VerticalOptions="Center">
+                    <Label Text="Managing climbs"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           FontSize="40"/>
+                    <Label Text="CLick to delete climb(s)"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           TextColor="DarkGray"
+                           FontAttributes="Italic"/>
+                </VerticalStackLayout>
+                <Border Grid.Row="1"
+                    Margin="20"
+                    Padding="10">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10"/>
+                    </Border.StrokeShape>
+                    <Grid RowDefinitions="*,6*">
+                        <Grid ColumnDefinitions="*,*">
+                            <Button Text="All climbs"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                BorderColor="Black"
+                                BorderWidth="1"
+                                Margin="10"
+                                Clicked="SetAllVisible"/>
+                            <Button Text="Flagged climbs"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                BorderColor="Black"
+                                BorderWidth="1"
+                                Margin="10"
+                                    Clicked="SetFlaggedVisible"/>
+                        </Grid>
+                        <!-- 
+                            All the climbs on the wall
+                        -->
+                        <Grid Grid.Row="1"
+                          x:Name="AllClimbs">
+                            <VerticalStackLayout>
+                                <Label Text="All climbs"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="20"
+                                       FontAttributes="Italic"/>
+                                <ListView x:Name="ClimbsListView"
+                                          VerticalOptions="FillAndExpand"
+                                          ItemTapped="OnClimbTapped"
+                                          HasUnevenRows="True">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Border Margin="10"
+                                    VerticalOptions="FillAndExpand"
+                                                        BackgroundColor="{StaticResource FernGreen}">
+                                                    <VerticalStackLayout Spacing="10"
+                                         Padding="10"
+                                         VerticalOptions="FillAndExpand">
+                                                        <HorizontalStackLayout>
+                                                            <Label Text="Climb name: "/>
+                                                            <Label Text="{Binding Name}"
+                                               FontSize="15"
+                                               VerticalOptions="Center"/>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                </Border>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </VerticalStackLayout>
+                        </Grid>
+                        
+                        <!-- 
+                            Climbs on the wall that have been flagged by users as innapropriate
+                        -->
+                        <Grid Grid.Row="1"
+                              x:Name="FlaggedClimbs"
+                              IsVisible="False">
+                            <VerticalStackLayout>
+                                <Label Text="Flagged climbs"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="20"
+                                       FontAttributes="Italic"/>
+                                <ListView x:Name="FlaggedClimbsListView"
+                                          VerticalOptions="FillAndExpand"
+                                          HasUnevenRows="True"
+                                          ItemTapped="OnClimbTapped">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <Border Margin="10"
+                                                        VerticalOptions="FillAndExpand"
+                                                        BackgroundColor="{StaticResource FernGreen}">
+                                                    <VerticalStackLayout Spacing="10"
+                                                                         Padding="10"
+                                                                         VerticalOptions="FillAndExpand">
+                                                        <HorizontalStackLayout>
+                                                            <Label Text="Climb name: "/>
+                                                            <Label Text="{Binding Name}"
+                                                                   FontSize="15"
+                                                                   VerticalOptions="Center"/>
+                                                        </HorizontalStackLayout>
+                                                    </VerticalStackLayout>
+                                                </Border>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Grid>
+                </Border>   
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
