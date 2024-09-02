@@ -82,22 +82,6 @@
                             </HorizontalStackLayout>
                         </Grid>
                     </Border>
-                    <Border Grid.Column="4">
-                        <Grid HorizontalOptions="Center"
-                              VerticalOptions="Center">
-                            <ImageButton Source="filler_image.webp"
-                                         Opacity="0"
-                                         ZIndex="5"
-                                         Clicked="OnEditWallClicked"/>
-                            <HorizontalStackLayout VerticalOptions="Center">
-                                <Image Source="edit_users.webp"
-                                       Margin="20"/>
-                                <Label Text="Climbers"
-                                       FontSize="30"
-                                       VerticalOptions="Center"/>
-                            </HorizontalStackLayout>
-                        </Grid>
-                    </Border>
                 </Grid>
             </Grid>
 
