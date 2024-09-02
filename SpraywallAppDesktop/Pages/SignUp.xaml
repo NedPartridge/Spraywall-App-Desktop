@@ -32,22 +32,23 @@
 
             
             <!--Buttons-->
-            <Grid ColumnDefinitions="4*,*,2*,*,4*" 
+            <HorizontalStackLayout Spacing="10"
                                    Grid.Row="6" 
                                    HorizontalOptions="Center" 
                                    VerticalOptions="Center">
                 <!--Back button-->
-                <ImageButton Clicked="OnBackButtonClicked"
-                             Source="left_arrow.svg"
-                             MaximumWidthRequest="100"
-                             Grid.Column="1"/>
-
+                <Button Clicked="OnBackButtonClicked"
+                        Text="back"
+                        MaximumWidthRequest="100"
+                        TextColor="Black"
+                        BackgroundColor="{StaticResource StoneGrey}"/>
                 <!--Next button-->
-                <ImageButton Clicked="OnSubmitButtonClicked"
-                             Source="next_circle_arrow.svg"
-                             MaximumWidthRequest="100"
-                             Grid.Column="3"/>
-            </Grid>
+                <Button Clicked="OnSubmitButtonClicked"
+                        MaximumWidthRequest="100"
+                        BackgroundColor="{StaticResource LowPriorityGreen}"
+                        TextColor="Black"
+                        Text="next"/>
+            </HorizontalStackLayout>
         </Grid>
 
 
